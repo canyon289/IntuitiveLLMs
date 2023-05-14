@@ -1,3 +1,5 @@
 flax
 matplotlib
 jupyterlab
+jupytext
+pandas
