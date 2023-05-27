@@ -128,8 +128,10 @@ def create_train_state(rng, config, network):
   """Creates initial `TrainState`."""
   if network == "CNN":
     cnn = CNN()
-  if network == "VanillaNN":
+  elif network == "VanillaNN":
     cnn = VanillaNN()
+  else:
+    raise Exception("Return valid network")
 
   print(f"Training {network}")
 
@@ -140,7 +142,8 @@ def create_train_state(rng, config, network):
 
 
 def train_and_evaluate(config: ml_collections.ConfigDict,
-                       workdir: str) -> train_state.TrainState:
+                       workdir: str
+                       network) -> train_state.TrainState:
   """Execute model training and evaluation loop.
 
   Args:
@@ -157,7 +160,7 @@ def train_and_evaluate(config: ml_collections.ConfigDict,
   summary_writer.hparams(dict(config))
 
   rng, init_rng = jax.random.split(rng)
-  state = create_train_state(init_rng, config)
+  state = create_train_state(init_rng, config, network)
 
   for epoch in range(1, config.num_epochs + 1):
     rng, input_rng = jax.random.split(rng)
