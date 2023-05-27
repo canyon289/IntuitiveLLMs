@@ -101,9 +101,9 @@ class VanillaNN(BaseModel):
   @nn.compact
   def __call__(self, x):
     x = x.reshape((x.shape[0], -1))  # flatten
-    x = nn.Dense()(x)
+    x = nn.Dense(features=256)(x)
     x = nn.relu(x)
-    x = nn.Dense()(x)
+    x = nn.Dense(features=256)(x)
     x = nn.relu(x)
     x = nn.Dense(features=256)(x)
     x = nn.relu(x)
@@ -124,9 +124,15 @@ def get_datasets():
   return train_ds, test_ds
 
 
-def create_train_state(rng, config):
+def create_train_state(rng, config, network):
   """Creates initial `TrainState`."""
-  cnn = CNN()
+  if network == "CNN":
+    cnn = CNN()
+  if network == "VanillaNN":
+    cnn = VanillaNN()
+
+  print(f"Training {network}")
+
   params = cnn.init(rng, jnp.ones([1, 28, 28, 1]))['params']
   tx = optax.sgd(config.learning_rate, config.momentum)
   return train_state.TrainState.create(

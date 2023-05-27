@@ -57,8 +57,8 @@ def main(argv):
   platform.work_unit().create_artifact(platform.ArtifactType.DIRECTORY,
                                        FLAGS.workdir, 'workdir')
 
-  train.train_and_evaluate(FLAGS.config, FLAGS.workdir)
-
+  train.train_and_evaluate(FLAGS.config, FLAGS.workdir, network="CNN")
+  train.train_and_evaluate(FLAGS.config, FLAGS.workdir, network="VanilaNN")
 
 if __name__ == '__main__':
   flags.mark_flags_as_required(['config', 'workdir'])
