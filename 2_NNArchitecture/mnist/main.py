@@ -58,7 +58,7 @@ def main(argv):
                                        FLAGS.workdir, 'workdir')
 
   train.train_and_evaluate(FLAGS.config, FLAGS.workdir, network="CNN")
-  train.train_and_evaluate(FLAGS.config, FLAGS.workdir, network="VanilaNN")
+  train.train_and_evaluate(FLAGS.config, FLAGS.workdir, network="VanillaNN")
 
 if __name__ == '__main__':
   flags.mark_flags_as_required(['config', 'workdir'])

@@ -142,7 +142,7 @@ def create_train_state(rng, config, network):
 
 
 def train_and_evaluate(config: ml_collections.ConfigDict,
-                       workdir: str
+                       workdir: str,
                        network) -> train_state.TrainState:
   """Execute model training and evaluation loop.
 
