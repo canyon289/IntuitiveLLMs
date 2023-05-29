@@ -6,3 +6,25 @@
 * How to fit them in Flax
   * With details on each tip
 * Practical tips
+
+
+
+## Topics to study
+### Shaping and Training
+* Tokenization
+* Hyperparameters
+  * Context window
+  * Parameters
+* Pretraining and next token prediction
+* Supervised Fine Tuning
+  * RHLF
+  * Rewards Models
+
+### Inference/Serving
+* Hardware needs
+* Latency
+
+### Compaction
+* Distillation
+* LORA
+* Quantization
