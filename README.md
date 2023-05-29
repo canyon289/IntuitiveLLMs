@@ -28,3 +28,7 @@
 * Distillation
 * LORA
 * Quantization
+
+## Papers to read
+* Palm 2 Technical Report - https://arxiv.org/abs/2305.10403
+* GPT4 Technical Report - https://arxiv.org/abs/2303.08774
