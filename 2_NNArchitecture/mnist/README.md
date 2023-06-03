@@ -7,6 +7,9 @@ installation required:
 
 https://colab.research.google.com/github/google/flax/blob/main/examples/mnist/mnist.ipynb
 
+Updated MNIST for Vanilla and CNN models
+* https://colab.research.google.com/drive/1AVj2kVvrpF0qcx5yo0SBu43j2yaET1AT
+
 ### Requirements
 * TensorFlow dataset `mnist` will be downloaded and prepared automatically, if necessary
 
