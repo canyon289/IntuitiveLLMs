@@ -15,6 +15,7 @@ jupyter:
 
 <!-- #region slideshow={"slide_type": "slide"} -->
 # Intuitive AI: Session 2
+## Basic Neural Net
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "slide"} -->
@@ -190,7 +191,7 @@ coefficients.shape, x_obs.shape
 
 <!-- #region slideshow={"slide_type": "slide"} -->
 ## Matrix Multiplication
-(1,2) @ (2, 200) = (1,200) 
+(1,2) @ (2, 200) = (1, 200) 
 <!-- #endregion -->
 
 ```python
@@ -237,7 +238,7 @@ y_obs_noisy = y_obs + stats.norm(0, noise_sd).rvs(y_obs.shape)
 
 <!-- #region slideshow={"slide_type": "slide"} -->
 ## Reminder of our Goal
-The goal here is to figure out the **coefficients m_0, m_1, bias** using our **observed x_0, x_! data**
+The goal here is to figure out the **coefficients m_0, m_1, bias** using our **observed x_0, x_1 data**
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "slide"} -->
@@ -334,7 +335,7 @@ model = LinearRegression()
 ```
 
 ```python
-key = jax.random.PRNGKey(0)
+key = jax.random.PRNGKey(0) 
 ```
 
 <!-- #region slideshow={"slide_type": "slide"} -->
@@ -405,6 +406,10 @@ bias = params["params"]["dense"]["bias"]
 m = params["params"]["dense"]["kernel"]
 y_0_pred = m[0] * x_obs[0][0] + m[1] * x_obs[0][1] + bias
 y_0_pred
+```
+
+```python
+y_obs[0]
 ```
 
 ```python
@@ -501,7 +506,7 @@ ax.set_ylabel("Trainng loss");
 ```
 
 <!-- #region slideshow={"slide_type": "slide"} -->
-## Final Parmameters
+## Final Parameters
 <!-- #endregion -->
 
 ```python
@@ -614,7 +619,7 @@ class NonLinearRegression(nn.Module):
     # Define the neural network architecture
     @nn.compact
     def __call__(self, x):
-        x = nn.Dense(128)(x)                 # create inline Flax Module submodules
+        x = nn.Dense(128)(x)              # create inline Flax Module submodules
         x = nn.relu(x)
         x = nn.Dense(features=1)(x)       # shape inference
         return x
@@ -631,7 +636,7 @@ state = train_state.TrainState.create(apply_fn=model, params=params, tx=optimize
 ```
 
 ```python
-epochs = 10000
+epochs = 3000
 _loss = []
 
 for epoch in range(epochs):
@@ -643,7 +648,7 @@ for epoch in range(epochs):
 ```
 
 ```python
-state;
+state
 ```
 
 ```python
